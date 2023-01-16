@@ -1,7 +1,12 @@
 package pers.luo.example;
 
+import pers.luo.server.RpcServer;
+
 public class Server {
     public static void main(String[] args) {
-        Server server = new Server();
+        CalcServiceImpl calcService = new CalcServiceImpl();
+        RpcServer server = new RpcServer();
+        server.register(CalcService.class, new CalcServiceImpl());
+        server.start();
     }
 }
